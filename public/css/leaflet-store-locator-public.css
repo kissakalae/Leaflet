@@ -1,0 +1,86 @@
+/**
+ * All of the CSS for your public-facing functionality should be
+ * included in this file.
+ */
+
+#mapid { height: 70vh; }
+.bootstrap h2 {
+	font-family: "futura-pt-bold",sans-serif;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+}
+.bootstrap .text-center {
+	text-align: center;
+}
+
+.bootstrap #leaflet_postal_code {
+	font-family: "futura-pt-bold",sans-serif;
+	letter-spacing: 1px;
+	padding: 15px 0;
+	background-color: #D8D8D8;
+	width: 100%;
+	text-align: center;
+	border: none;
+	font-size: 14px;
+	margin-top:10px;
+
+}
+.bootstrap #mm-records {
+	padding: 30px 10px;
+}
+.bootstrap #mm-records.add-bg {
+	background-color: #D8D8D8;
+}
+.bootstrap #leaflet_postal_code.add-border,
+.bootstrap #mm-records.add-bg .row > .col-md-12,
+.bootstrap #mm-records.add-bg #leaflet_postal_code {
+	border-bottom: 2px solid #A8A8A8;
+}
+.bootstrap #mm-records.add-bg .row > .col-md-12:last-of-type {
+	border-bottom: none;
+}
+.bootstrap #mm-records.add-bg .row > .col-md-12 {
+	padding: 20px 20px;
+}
+.bootstrap #mm-records p {
+	font-family: "Open Sans", sans-serif;
+	font-size: 16px;
+	font-style: italic;
+	color: #9DBB9B;
+}
+.bootstrap #mm-records .row {
+	margin-left: 0px;
+	margin-right: 0px;
+}
+.bootstrap #mm-records span {
+
+	font-family: "Open Sans", sans-serif;
+	font-size: 12px;
+	width: 100%;
+    text-align: left;
+}
+.bootstrap #mm-records span.area {
+	font-family: "futura-pt";
+	font-size: 14px;
+	letter-spacing: 2px;
+	text-transform: uppercase;
+}
+.bootstrap .story:hover {
+	cursor: pointer;
+}
+.bootstrap .area,
+.bootstrap .timing,
+.bootstrap .name {
+	font-weight: bold;
+}
+.bootstrap .phone a {
+	font-size: 12px;
+	text-decoration: none;
+	color: #292b2c;
+}
+
+/* Leaflet icon */
+.leaflet-div-icon {
+	background: unset;
+	border: unset;
+}
