@@ -336,7 +336,30 @@ class Leaflet_Store_Locator_Settings {
 				'append' => '',
 				'maxlength' => '',
 			),
-			// Mukautetut taksonomiat
+				// Kartan väriteema
+			array(
+				'key' => 'field_kartan_variteema',
+				'label' => 'Kartan väriteema',
+				'name' => 'kartan_variteema',
+				'type' => 'text',
+				'instructions' => 'Tämä on merkkijono, jonka saa MapBoxin sivustolta. Esim. https://api.mapbox.com/styles/v1/myyntimatti/MERKKIJONO/tiles/256/',
+				'required' => 1,
+				'conditional_logic' => array(
+					'field' => 'field_sisaltotyypinEditointi',
+					'operator' => '==',
+					'value' => 1
+				),
+				'wrapper' => array(
+					'width' => '100%',
+					'class' => '',
+					'id' => '',
+				),
+				'default_value' => 'ck8e5yenu3iaz1imy4mr4cfdg',
+				'placeholder' => '',
+				'prepend' => '',
+				'append' => '',
+				'maxlength' => '',
+			),
 			array(
 				'key' => 'field_taksonomiat',
 				'label' => 'Mukautetut taksonomiat',
@@ -440,197 +463,6 @@ class Leaflet_Store_Locator_Settings {
 				'description' => '',
 			));
 		
-		acf_add_local_field_group(array(
-			'key' => 'group_kartan_asetukset',
-			'title' => 'Kartan asetukset',
-			'fields' => array(
-				
-				// Boolean at the start of the admin page - default: false -> don't show
-				// If true, show rest of the options
-			array(
-				'key' => 'field_karttaAsetusten_editointi',
-				'label' => 'Haluatko muokata kartan asetuksia?',
-				'name' => 'kartan_editointi',
-				'type' => 'true_false',
-				'instructions' => 'HUOM!: Tämän osion tarkoitus on helpottaa tiettyjen asetusten esivalmistelua. Asetuksia muuttamalla on mahdollista rikkoa sivusto, joten ethän tee muutoksia tämän sivun asetuksiin, ellet todella tiedä mitä olet tekemässä.',
-				'required' => 0,
-				'conditional_logic' => 0,
-				'wrapper' => array(
-					'width' => '100%',
-					'class' => '',
-					'id' => '',
-				),
-				'default_value' => false,
-				'prepend' => '',
-				'append' => '',
-				'maxlength' => '',
-			),
-				// Latitude / Leveysaste
-			array(
-				'key' => 'field_kartan_leveysaste',
-				'label' => 'Kartan alkunäkymän leveysaste',
-				'name' => 'kartta_leveysaste',
-				'type' => 'number',
-				'instructions' => '',
-				'required' => 1,
-				'conditional_logic' => array(
-					'field' => 'field_karttaAsetusten_editointi',
-					'operator' => '==',
-					'value' => 1
-				),
-				'wrapper' => array(
-					'width' => '33%',
-					'class' => '',
-					'id' => '',
-				),
-				'default_value' => '60.1674098',
-				'placeholder' => '60.1674098',
-				'prepend' => '',
-				'append' => '',
-				'maxlength' => '',
-			),
-				// Longitude / Pituusaste
-			array(
-				'key' => 'field_kartan_pituusaste',
-				'label' => 'Kartan alkunäkymän pituusaste',
-				'name' => 'kartta_pituusaste',
-				'type' => 'number',
-				'instructions' => '',
-				'required' => 1,
-				'conditional_logic' => array(
-					'field' => 'field_karttaAsetusten_editointi',
-					'operator' => '==',
-					'value' => 1
-				),
-				'wrapper' => array(
-					'width' => '33%',
-					'class' => '',
-					'id' => '',
-				),
-				'default_value' => '24.9347579',
-				'placeholder' => '24.9347579',
-				'prepend' => '',
-				'append' => '',
-				'maxlength' => '',
-			),
-				// Map zoom
-			array(
-				'key' => 'field_kartan_zoomaus',
-				'label' => 'Kartan alkunäkymän zoom-arvo',
-				'name' => 'kartta_zoom',
-				'type' => 'number',
-				'instructions' => 'Oletusarvot: minimille 5, maksimille 20',
-				'required' => 1,
-				'conditional_logic' => array(
-					'field' => 'field_karttaAsetusten_editointi',
-					'operator' => '==',
-					'value' => 1
-				),
-				'wrapper' => array(
-					'width' => '33%',
-					'class' => '',
-					'id' => '',
-				),
-				'default_value' => '5',
-				'placeholder' => '5',
-				'prepend' => '',
-				'append' => '',
-				'maxlength' => '',
-			),
-				// Map max zoom
-			array(
-				'key' => 'field_kartan_minZoomaus',
-				'label' => 'Kartan minimi zoom-arvo',
-				'name' => 'kartta_minZoom',
-				'type' => 'number',
-				'instructions' => 'Luvun oltava pienempi kuin maksimin',
-				'required' => 1,
-				'conditional_logic' => array(
-					'field' => 'field_karttaAsetusten_editointi',
-					'operator' => '==',
-					'value' => 1
-				),
-				'wrapper' => array(
-					'width' => '50%',
-					'class' => '',
-					'id' => '',
-				),
-				'default_value' => '5',
-				'placeholder' => '5',
-				'prepend' => '',
-				'append' => '',
-				'maxlength' => '',
-			),
-				// Map min zoom
-			array(
-				'key' => 'field_kartan_maxZoomaus',
-				'label' => 'Kartan maksimi zoom-arvo',
-				'name' => 'kartta_maxZoom',
-				'type' => 'number',
-				'instructions' => 'Luvun oltava suurempi kuin minimin',
-				'required' => 1,
-				'conditional_logic' => array(
-					'field' => 'field_karttaAsetusten_editointi',
-					'operator' => '==',
-					'value' => 1
-				),
-				'wrapper' => array(
-					'width' => '50%',
-					'class' => '',
-					'id' => '',
-				),
-				'default_value' => '20',
-				'placeholder' => '20',
-				'prepend' => '',
-				'append' => '',
-				'maxlength' => '',
-			),
-				// Kartan väriteema
-			array(
-				'key' => 'field_kartan_variteema',
-				'label' => 'Kartan väriteema',
-				'name' => 'kartan_variteema',
-				'type' => 'text',
-				'instructions' => 'Tämä on merkkijono, jonka saa MapBoxin sivustolta. Esim. https://api.mapbox.com/styles/v1/myyntimatti/MERKKIJONO/tiles/256/',
-				'required' => 1,
-				'conditional_logic' => array(
-					'field' => 'field_karttaAsetusten_editointi',
-					'operator' => '==',
-					'value' => 1
-				),
-				'wrapper' => array(
-					'width' => '100%',
-					'class' => '',
-					'id' => '',
-				),
-				'default_value' => 'ck8e5yenu3iaz1imy4mr4cfdg',
-				'placeholder' => 'ck8e5yenu3iaz1imy4mr4cfdg',
-				'prepend' => '',
-				'append' => '',
-				'maxlength' => '',
-			),
-				
-				//
-				),
-				'location' => array(
-					array(
-						array(
-							'param' => 'options_page',
-							'operator' => '==',
-							'value' => 'acf-options-admin-asetukset',
-						),
-					),
-				),
-				'menu_order' => 1,
-				'position' => 'normal',
-				'style' => 'default',
-				'label_placement' => 'top',
-				'instruction_placement' => 'label',
-				'hide_on_screen' => '',
-				'active' => true,
-				'description' => '',
-			));
-		
 		/*
 		*		POST TYPE SETTINGS
 		*/
@@ -649,7 +481,7 @@ class Leaflet_Store_Locator_Settings {
 			"show_ui" 				=> true,
 			"show_in_rest" 			=> true,
 			"rest_base" 			=> "",
-			"menu_position"         => 5,
+			'menu_position'         => 5,
 			"rest_controller_class" => "WP_REST_Posts_Controller",
 			"has_archive" 			=> true,
 			"show_in_menu" 			=> true,
@@ -662,7 +494,7 @@ class Leaflet_Store_Locator_Settings {
 			'menu_icon'             => 'dashicons-location',
 			"rewrite" 				=> [ "slug" => get_field('sisaltotyypin_slug', 'option'), "with_front" => true ],
 			"query_var" 			=> true,
-			"supports" 				=> [ "title", 'editor', 'thumbnail' ],
+			"supports" 				=> [ "title" ],
 		];
 
 		register_post_type( get_field('sisaltotyypin_slug', 'option'), $args );
@@ -679,11 +511,11 @@ class Leaflet_Store_Locator_Settings {
 			'fields' => array(
 				array(
 					'key' => 'field_5eccced536de8',
-					'label' => 'Nimi',
+					'label' => 'Name',
 					'name' => 'name',
 					'type' => 'text',
-					'instructions' => 'Esim: Prisma Tripla',
-					'required' => 0,
+					'instructions' => 'for eg: Prisma Tripla',
+					'required' => 1,
 					'conditional_logic' => 0,
 					'wrapper' => array(
 						'width' => '25%',
@@ -698,11 +530,11 @@ class Leaflet_Store_Locator_Settings {
 				),
 				array(
 					'key' => 'field_5ecccdc736de7',
-					'label' => 'Kaupunki',
+					'label' => 'City',
 					'name' => 'area',
 					'type' => 'text',
-					'instructions' => 'Esim: Helsinki',
-					'required' => 0,
+					'instructions' => 'for eg: Helsinki',
+					'required' => 1,
 					'conditional_logic' => 0,
 					'wrapper' => array(
 						'width' => '25%',
@@ -717,11 +549,11 @@ class Leaflet_Store_Locator_Settings {
 				),
 				array(
 					'key' => 'field_5ecccf1236dea',
-					'label' => 'Postinumero',
+					'label' => 'Postal Code',
 					'name' => 'postal_code',
 					'type' => 'number',
-					'instructions' => 'Esim: 00100',
-					'required' => 0,
+					'instructions' => 'for eg: 00100',
+					'required' => 1,
 					'conditional_logic' => 0,
 					'wrapper' => array(
 						'width' => '25%',
@@ -738,11 +570,11 @@ class Leaflet_Store_Locator_Settings {
 				),
 				array(
 					'key' => 'field_5ecccefd36de9',
-					'label' => 'Osoite',
+					'label' => 'Address',
 					'name' => 'address',
 					'type' => 'text',
-					'instructions' => 'Esim: Hermannin rantatie 2',
-					'required' => 0,
+					'instructions' => 'for eg: Hermannin rantatie 2',
+					'required' => 1,
 					'conditional_logic' => 0,
 					'wrapper' => array(
 						'width' => '25%',
@@ -757,11 +589,11 @@ class Leaflet_Store_Locator_Settings {
 				),
 				array(
 					'key' => 'field_5ecf54885f040',
-					'label' => 'Puhelinnumero',
+					'label' => 'Phone',
 					'name' => 'phone',
 					'type' => 'text',
-					'instructions' => 'Esim: 020 7669 755',
-					'required' => 0,
+					'instructions' => 'for eg: 020 7669 755',
+					'required' => 1,
 					'conditional_logic' => 0,
 					'wrapper' => array(
 						'width' => '25%',
@@ -776,10 +608,10 @@ class Leaflet_Store_Locator_Settings {
 				),
 				array(
 					'key' => 'field_5easdds885f040',
-					'label' => 'Sähköposti',
+					'label' => 'Email',
 					'name' => 'email',
 					'type' => 'text',
-					'instructions' => 'Esim: info@esimerkki.com',
+					'instructions' => 'for eg: info@example.com',
 					'required' => 0,
 					'conditional_logic' => 0,
 					'wrapper' => array(
@@ -795,10 +627,10 @@ class Leaflet_Store_Locator_Settings {
 				),
 				array(
 					'key' => 'field_5ecd0b6065541',
-					'label' => 'Latitude/Leveysaste',
+					'label' => 'Latitude',
 					'name' => 'latitude',
-					'type' => 'number',
-					'instructions' => 'Esim: 60.1674098',
+					'type' => 'text',
+					'instructions' => 'for eg: 60.1674098',
 					'required' => 0,
 					'conditional_logic' => 0,
 					'wrapper' => array(
@@ -814,10 +646,10 @@ class Leaflet_Store_Locator_Settings {
 				),
 				array(
 					'key' => 'field_5ecd0c3c65542',
-					'label' => 'Longitude/Pituusaste',
+					'label' => 'Longitude',
 					'name' => 'longitude',
-					'type' => 'number',
-					'instructions' => 'Esim: 24.9425769',
+					'type' => 'text',
+					'instructions' => 'for eg: 24.9425769',
 					'required' => 0,
 					'conditional_logic' => 0,
 					'wrapper' => array(
@@ -869,10 +701,10 @@ class Leaflet_Store_Locator_Settings {
 			'active' => true,
 			'description' => '',
 		));
-			  
-		//
-			//	CUSTOM TAXONOMIES
-		//
+								  
+		/*
+		*		CUSTOM TAXONOMIES
+		*/
 
 		if ( have_rows('mukautetut_taksonomiat', 'option') ) :
 			while ( have_rows('mukautetut_taksonomiat', 'option') ) : the_row();
@@ -901,7 +733,7 @@ class Leaflet_Store_Locator_Settings {
 			);
 			$args = array(
 				'labels'                     => $labels,
-				'hierarchical'               => true,
+				'hierarchical'               => false,
 				'public'                     => true,
 				'show_ui'                    => true,
 				'show_admin_column'          => true,
@@ -913,28 +745,31 @@ class Leaflet_Store_Locator_Settings {
 				'publicly_queryable'		 => true,
 				'rewrite_with_front'		 => true,
 			);
-			register_taxonomy( get_sub_field('taksonomian_slug'), get_field('sisaltotyypin_slug', 'option'), $args );
+			register_taxonomy( get_sub_field('taksonomian_slug'), array( get_field('sisaltotyypin_slug', 'option') ), $args );
 								  
 			endwhile;
 		endif;
+								  
+		endif;
 		
-		// Pass variable to JS
+		/* Pass variable to JS */
 		wp_register_script( 'toimipaikkaScripts', plugin_dir_url( __DIR__ ) . 'public/js/leaflet-store-locator-public.js' );
 		wp_enqueue_script( 'toimipaikkaScripts' );
 		$toimipaikkaJS = array(
 			'teksti' => get_field('ohjeteksti', 'option'),
 		);
 		wp_localize_script( 'toimipaikkaScripts', 'scripts', $toimipaikkaJS );
-								  
-		endif;
-    }
-	
-	//
-		// Renders store locator.
-	//
-    public function store_locator() {
-		ob_start(); ?>
 
+    }
+
+
+	/**
+	 * Renders store locator.
+	*/
+    public function store_locator() {
+
+    	ob_start();
+    	?>
 			<!-- Main Form -->
 			<div id="showapp" class="bootstrap">
 				
@@ -963,19 +798,21 @@ class Leaflet_Store_Locator_Settings {
 			</div>
 			<script>
 					var whiteIcon = L.divIcon({
+						
 						iconSize:     [28, 41], // size of the icon
 						iconAnchor:   [12, 24], // point of the icon which will correspond to marker's location
 						popupAnchor:  [0, -30], // point from which the popup should open relative to the iconAnchor
 						html: '<i class="fas fa-map-marker-alt" style = "font-size: 30px; color: <?php echo get_field('ikonin_vari', 'option'); ?>"></i>',
-					});
+					})
 					
-					//var whiteIcon = L.icon({
-					//	iconUrl: '<?php //echo get_site_url(); ?>/wp-content/plugins/leaflet-store-locator/public/images/white-pin.png',
+					/*var whiteIcon = L.icon({
+						iconUrl: '<?php //echo get_site_url(); ?>/wp-content/plugins/leaflet-store-locator/public/images/white-pin.png',
 
-					//	iconSize:     [28, 41], // size of the icon
-					//	iconAnchor:   [13, 41], // point of the icon which will correspond to marker's location
-					//	popupAnchor:  [0, -36], // point from which the popup should open relative to the iconAnchor
-					//});
+						iconSize:     [28, 41], // size of the icon
+						iconAnchor:   [13, 41], // point of the icon which will correspond to marker's location
+						popupAnchor:  [0, -36], // point from which the popup should open relative to the iconAnchor
+						html: '<span style="background-color:<?php echo get_field('ikonin_vari', 'option'); ?>" />'
+					});*/
 
 					var greenIcon = L.icon({
 						iconUrl: '<?php echo get_site_url(); ?>/wp-content/plugins/leaflet-store-locator/public/images/green-pin.png',
@@ -985,11 +822,11 @@ class Leaflet_Store_Locator_Settings {
 						popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
 					});
 					
-					var mymap = L.map('mapid').setView( [ <?php echo get_field('kartta_leveysaste', 'option'); ?>, <?php echo get_field('kartta_pituusaste', 'option'); ?> ], <?php echo get_field('kartta_zoom', 'option');  ?> );
+					var mymap = L.map('mapid').setView([60.1695583,24.9347579], 5);
+					
+	        		mymap.panBy(L.point(0, -130));
+	        		<?php
 
-	        		mymap.panBy( L.point(0, -130) );
-
-	        		<?php 
 	        		$args['paged'] = get_query_var( 'paged' ) ? get_query_var( 'paged' ) : 1;
 					$posts_per_page = -1;
 					
@@ -1003,22 +840,24 @@ class Leaflet_Store_Locator_Settings {
 					$loop = new WP_Query( $queries );
 				    
 				    if ( $loop->have_posts() ) {
+						
+					// Filter special characters from coords
+					function RemoveSpecialChars($str) {
+						$res = str_replace( array( '\'', '"', ',' , ';', '<', '>', '|' ), '', $str );
+						return $res;
+					}
 
 				    ?>
-					var markers = [ <?php
+					var markers = [
+		   			<?php
 		        	while ( $loop->have_posts() ) : $loop->the_post(); 
 		        		if ( get_field('latitude') && get_field('longitude') ) :
 						
-						// Filter special characters from coords
-						//public function RemoveSpecialChars($latORlong) {
-						//	$res = str_replace( array( '\'', '"', ',' , ';', '<', '>', '|' ), '', $latORlong );
-						//	return $res;
-						//}
-						$newLat = str_replace( array(','), '.', get_field('latitude') );
-						$newLong = str_replace( array(','), '.', get_field('longitude') );
+						// Filter special chars from coords
+						$long = RemoveSpecialChars( get_field('latitude') );
+						$lat = RemoveSpecialChars( get_field('longitude') );
 						
-						echo "{
-								coords: [" . $newLat . ", " . $newLong . "], 
+						echo "{ coords: [" . $long .", " . $lat ."], 
 								uri: '#', 
 								icon: whiteIcon, 
 								popup: '<strong>" . get_field( "area" ) 
@@ -1028,12 +867,11 @@ class Leaflet_Store_Locator_Settings {
 							get_field( "address" ) 
 							.", " . 
 							get_field( "postal_code" ) .
-							"<br />'
-							},\n ";
+							"<br /><a href=\" "  . get_permalink() . " \">Linkki</a>'},\n ";
 						endif; 
 	    			endwhile;
-	    			?> ];
-					
+	    			?>
+					];
 						var x = markers.length;
 
 						while(x--)
@@ -1043,6 +881,10 @@ class Leaflet_Store_Locator_Settings {
 										.setContent(markers[x].popup)
 										.setLatLng(markers[x].coords);
 							m.bindPopup(p);
+// 							var m = L.marker(markers[x].coords, {icon: markers[x].icon}).on('click', function(e) {
+// 								//window.location = markers[e.target._leaflet_id].uri;
+// 								//markers[e.target._leaflet_id].bindPopup("This is the Transamerica Pyramid").openPopup();
+// 							}).addTo(mymap)._leaflet_id = x;
 						}
 
 						
@@ -1051,13 +893,14 @@ class Leaflet_Store_Locator_Settings {
 					?>
 
 					L.tileLayer('https://api.mapbox.com/styles/v1/myyntimatti/<?php echo get_field('kartan_variteema', 'option'); ?>/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoibXl5bnRpbWF0dGkiLCJhIjoiY2pueWhteWdxMGkyNjN2bnhnNWc2ZTJxdiJ9.Ygqhrf050CThyuiUi8bnhg', {
-						minZoom: <?php echo get_field('kartta_minZoom', 'option'); ?>,
-						maxZoom: <?php echo get_field('kartta_maxZoom', 'option'); ?>,
+						minZoom: 5,
+						maxZoom: 20,
 						attribution: 'Created by <strong><a href="https://myyntimaatio.fi" target="_blank" rel="noopener">Myyntimaatio</a></strong>',
 						id: 'mapbox/streets-v11',
 						tileSize: 512,
 						zoomOffset: -1
 					}).addTo(mymap);
+
 
 				</script>
     	<?php
@@ -1066,10 +909,10 @@ class Leaflet_Store_Locator_Settings {
 		ob_end_clean();
 		return $content;
     }
-	
-	//
-	 // Ajax requests.
-	//
+
+	/**
+	 * Ajax requests.
+	*/
 	public function send_request() {
 		ob_start();
 		$args['query_keyword'] = $_GET['leaflet_postal_code'];
@@ -1087,13 +930,18 @@ class Leaflet_Store_Locator_Settings {
 				'post_type' => get_field('sisaltotyypin_slug', 'option'),
 				'posts_per_page' => -1,
 			);
-	 
+	        //$queries['post_type'] = get_field('sisaltotyypin_slug', 'option');
+	       // $queries['posts_per_page'] = $posts_per_page;
+			//$queries['meta_key'] = 'postal_code';
+			//$queries['meta_value'] = $args['query_keyword'];
+	        //$queries['paged'] = $args['paged'];
+
 			$queries['meta_query']	= array(
 				'relation'		=> 'OR',
 					array(
 						'key'	 	=> 'postal_code',
 						'value' 	=> $args['query_keyword'],
-						'compare' 		=> 'LIKE',
+						'compare' 		=> 'IN',
 					),
 					array(
 						'key'	  	=> 'area',
@@ -1111,25 +959,37 @@ class Leaflet_Store_Locator_Settings {
 						'compare' 		=> 'LIKE',
 				)
             );
-			
+			/*$args = array(
+				'post_type' 	=>	'kaupat',
+				'meta_key'		=>	'postal_code',
+				'meta_value'	=>	'00350',
+			);
+			$kukkuu = new WP_Query($args);
+			var_dump($kukkuu);*/
+
+			//$queries['s'] = $args['query_keyword'];
 			$queries['s'] = $queries['meta_query'];
 			$loop = new WP_Query( $queries );
+			//var_dump($queries['meta_query']);
 			
 		    if ( $loop->have_posts() ) { ?>
 			<div class="row">
 			<?php while ( $loop->have_posts() ) : $loop->the_post(); ?>
+
 		        	<div class="col-md-12">
-		        		<div class="row story" <?php if ( get_field( "latitude" ) && get_field( "longitude" ) ) : ?>
-							 data-point="<?php echo get_field( "latitude" ); ?>, <?php echo get_field( "longitude" ); ?>" 
-						<?php endif; ?> >
+		        		<div class="row story" data-point="<?php echo get_field( "latitude" ); ?>, <?php echo get_field( "longitude" ); ?>">
+			        			<span class="area"><?php echo get_field( "area" ); ?></span>
 			        			<span class="name"><?php echo get_field( "name" ); ?></span>
 			        			<span class="address"><?php echo get_field( "address" ); ?></span>
 			        			<span class="postal"><?php echo get_field( "postal_code" ); ?> <?php echo get_field( "area" ); ?></span>
 								<?php if ( get_field('linkit_toimipisteille', 'option') == 1 ) : ?>
-								<a href = "<?php echo get_permalink(); ?>" class = "mm-toimipaikkaLinkki">Linkki <?php echo get_field('sisaltotyypin_slug', 'option'); ?>sivulle</a>
+								<a href = "<?php echo get_permalink(); ?>" class = "mm-toimipaikkaLinkki">Linkki <?php echo get_field('sisaltotyypin_slug', 'option'); ?>-sivulle
+									<i class = "fas fa-caret-right"></i>
+								</a>
 								<?php endif; ?>
 		        		</div>
 		        	</div>
+
 
 		    <?php endwhile; ?>
 			</div>
@@ -1138,7 +998,7 @@ class Leaflet_Store_Locator_Settings {
 			<?php
 		    }
 		}
-
+		
 		wp_reset_postdata();
     	$content = ob_get_contents();
 		ob_end_clean();
